@@ -228,11 +228,11 @@ body {
 /* end game-info */
 
 footer {
-  position: fixed;
+  position: relative;
   width: 100%;    
   padding: 20px;
   background-color: #333333;
-  bottom: 0;
+  bottom: -251px;
   color: white;
   font-size: 18px;
   text-align: center;
