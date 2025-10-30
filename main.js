@@ -129,6 +129,10 @@ function navigateInInputs(inputs){
           return;
         } 
       }
+
+      if(e.key === 'Enter') {
+        guessButton.click();
+      }
     });
   });
 }
