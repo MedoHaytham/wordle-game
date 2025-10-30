@@ -1,3 +1,4 @@
+import {words} from './words.js';
 // game settings
 let numOfTrys = 6;
 let numOfletters = 5;
@@ -7,50 +8,6 @@ let numOfHints = 2;
 
 //Generate Random Word
 let wordle = '';
-const words = [
-  "about","above","actor","acute","adapt","admit","adopt","adult","after","again",
-  "agent","agree","ahead","alarm","alert","alike","alive","allow","alone","along",
-  "alter","among","angel","anger","angle","angry","apart","apple","apply","arena",
-  "argue","arise","armed","arrow","aside","asset","avoid","awake","award","aware",
-  "badge","basic","beach","begin","being","below","bench","black","blame","blind",
-  "block","blood","board","boast","bonus","booth","brain","brand","brave","bread",
-  "break","breed","brick","brief","bring","broad","broke","broom","brown","build",
-  "built","burst","buyer","cable","calmn","carry","catch","cause","chain","chair",
-  "chart","chase","cheap","chest","chief","child","claim","class","clean","clear",
-  "clerk","climb","clock","close","cloud","coach","coast","could","count","cover",
-  "crash","cream","crime","cross","crowd","crown","cruel","crush","curve","cycle",
-  "daily","dance","death","delay","depth","deskc","dirty","drain","dream","dress",
-  "drill","drink","drive","early","earth","elbow","empty","enemy","enter","equal",
-  "error","event","every","exact","exist","extra","faith","false","fancy","fault",
-  "favor","feast","field","fight","final","first","flame","flash","floor","flour",
-  "focus","force","frame","fresh","front","fruit","ghost","giant","given","glass",
-  "globe","glory","glove","grade","grain","grant","grass","great","green","group",
-  "guard","guest","guide","habit","happy","heart","heavy","honey","horse","house",
-  "human","humor","hurry","ideal","index","inner","issue","joint","judge","juice",
-  "knock","label","labor","large","laugh","layer","learn","leave","level","light",
-  "limit","local","logic","loose","lucky","lunch","luffy","magic","major","maker",
-  "march","match","medal","media","metal","meter","model","money","month","moral",
-  "motor","mount","music","never","night","noble","noise","north","nurse","ocean",
-  "offer","often","order","other","outer","owner","paint","panel","party","pause",
-  "peace","pedal","phase","phone","photo","piece","pilot","pitch","place","plain",
-  "plant","plate","plead","point","power","press","price","pride","print","prize",
-  "proof","proud","quick","quiet","radio","reach","react","ready","refer","relax",
-  "reply","right","river","roast","route","royal","ruler","salad","scale","scene",
-  "scope","score","scout","serve","seven","shade","shake","shall","shape","share",
-  "sharp","sheet","sheep","shelf","shine","shirt","shock","shoot","shore","short",
-  "shout","sight","since","skill","sleep","slice","slide","slope","small","smart",
-  "smile","smoke","solid","solve","sound","space","spare","speak","speed","spend",
-  "spill","spirit","split","spoil","sport","stage","stain","stake","stand","stare",
-  "start","state","steam","steel","steep","stick","still","stock","stone","store",
-  "storm","story","stove","strap","street","strict","style","sugar","super","sweet",
-  "table","taste","teach","thank","theme","thick","thing","think","third","those",
-  "tight","title","today","token","topic","total","touch","tough","tower","track",
-  "trade","train","treat","trend","trial","trust","truth","twice","under","union",
-  "unity","value","visit","vocal","voice","waste","watch","water","wheat","wheel",
-  "where","which","while","white","whole","woman","world","worry","worth","write",
-  "wrong","yacht","young","youth","zebra"
-];
-
 wordle = words[Math.floor(Math.random() * words.length)].toUpperCase();
 
 
@@ -182,6 +139,7 @@ function hints(){
 }
 
 function checkWord(){
+  let userGuess = "";
   //ُ Ensure All Input Fields In The Current Try Are Filled
   for(let i = 1; i <= numOfletters; i++) {
     let inputField = document.querySelector(`#guess-${currentTry}-letter-${i}`);
@@ -189,6 +147,12 @@ function checkWord(){
       inputField.focus();
       return;
     }
+    userGuess += inputField.value.toLowerCase();
+  }
+
+  // Check If The Guessed word Exists in Words
+  if(!words.includes(userGuess)){
+    return;
   }
 
   // Check Word
