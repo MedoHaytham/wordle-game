@@ -6,9 +6,9 @@ let numOfHints = 2;
 
 
 //Generate Random Word
-let wordle = '';
-let words = [ "holly", "Loves", "Hater", "Unity", "Games" ,"Sight" , "Glare", "Giant"];
-wordle = words[Math.floor(Math.random() * words.length)].toUpperCase();
+let wordle = 'luffy';
+// let words = [ "holly", "Loves", "Hater", "Unity", "Games" ,"Sight" , "Glare", "Giant"];
+// wordle = words[Math.floor(Math.random() * words.length)].toUpperCase();
 
 
 function generateInputs() {
